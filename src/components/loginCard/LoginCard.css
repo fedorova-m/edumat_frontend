@@ -1,0 +1,13 @@
+.blockInputUserInfo {
+  display: flex;
+  justify-self: start;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.switchContainer {
+  display: flex;
+  justify-content: start;
+  gap: 8px;
+  margin-bottom: 24px;
+}

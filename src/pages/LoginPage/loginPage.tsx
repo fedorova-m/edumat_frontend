@@ -1,9 +1,10 @@
 import "./loginPage.css"
-import { CardWithForm } from "../../components/example/ExampleCard"
+import CardWithForm from "../../components/loginCard/LoginCard"
 export function LoginPage() {
+  const page = "login"
   return (
     <div className="LoginPage">
-      <CardWithForm />
+      <CardWithForm page={page} />
     </div>
   )
 }
