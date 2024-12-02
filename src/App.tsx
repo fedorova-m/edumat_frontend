@@ -1,18 +1,13 @@
-import { useState } from "react";
-import "./App.css";
+import "./App.css"
 
-import { CardWithForm } from './components/example/ExampleCard'
+import { LoginPage } from "./pages/LoginPage/loginPage"
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <h1>Vite + React</h1>
-
-      <CardWithForm />
+      <LoginPage />
     </>
-  );
+  )
 }
 
-export default App;
+export default App

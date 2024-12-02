@@ -1,0 +1,12 @@
+.buttonLogin {
+  width: 100%;
+}
+.LoginPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/background_loginPage.png");
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+}
