@@ -1,0 +1,56 @@
+.infoTextSubjectCard {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 167%;
+  color: #64748b;
+}
+.infoTextBlockSubjectCard {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: start;
+}
+.informacionSubjectCard {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: #0f172a;
+}
+.titleSubjectCard {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 156%;
+  color: #000;
+}
+.headerSubjectCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+}
+.svgSubjectCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 8px;
+  width: 32px;
+  height: 32px;
+}
+.subjectCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 17px;
+  width: 100%;
+  min-width: 300px;
+  max-width: calc((100vw - 72px + 24px - 160px) / 3);
+
+  box-shadow: 0 4psx 6px 0 rgba(0, 0, 0, 0.09);
+  background: #fff;
+}

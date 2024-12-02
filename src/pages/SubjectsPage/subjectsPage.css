@@ -1,0 +1,47 @@
+.titleSubjectContainer {
+  font-family: var(--font-family);
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: -0.01em;
+  color: #0f172a;
+}
+.textFilterSubjectPage {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 171%;
+  color: #0f172a;
+  font-family: var(--font-family);
+  padding: 8px 16px;
+}
+.textFilterBlockSubjectPage {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  align-items: center;
+}
+.searchBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100vw - 160px);
+}
+.subjectContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  width: 100%;
+}
+.subjectBlockCenter {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: start;
+  justify-content: center;
+  margin-inline: 80px;
+  width: calc(100% - 160px);
+  margin-top: 50px;
+}
+.subjectPage {
+  max-width: 100vw;
+}
