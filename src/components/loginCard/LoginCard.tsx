@@ -172,7 +172,7 @@ const CardWithForm: React.FC<CardWithFormProps> = ({ page }) => {
             )}
           </CardContent>
           <CardFooter className="flex justify-between">
-            <Button className="buttonLogin">Войти</Button>
+            <Button className="buttonLogin">Cоздать аккаунт</Button>
           </CardFooter>
         </Card>
       )}
