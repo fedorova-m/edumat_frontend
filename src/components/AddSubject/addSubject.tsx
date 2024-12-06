@@ -1,51 +1,72 @@
-import { Button } from "@/components/ui/button"; // Импортируем компонент Button
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"; // Импортируем компоненты для карточки
-import { Input } from "@/components/ui/input"; // Импортируем поле ввода
-import { Label } from "@/components/ui/label"; // Импортируем метки
-import { useState } from "react"; // Импортируем хук useState
-
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { useState } from "react"
+import "./addSubject.css"
 type AddSubjectCardProps = {
-  page: string;
-};
+  page: string
+  setModalAddSubject: Function
+}
+const AddSubjectCard: React.FC<AddSubjectCardProps> = ({
+  page,
+  setModalAddSubject,
+}) => {
+  const [subjectName, setSubjectName] = useState("")
+  const [description, setDescription] = useState("")
+  const [teacherName, setTeacherName] = useState("")
+  const [course, setCourse] = useState("")
+  const [program, setProgram] = useState("")
 
-const AddSubjectCard: React.FC<AddSubjectCardProps> = ({ page }) => {
-  const [subjectName, setSubjectName] = useState("");
-  const [description, setDescription] = useState("");
-  const [teacherName, setTeacherName] = useState("");
-  const [course, setCourse] = useState("");
-  const [program, setProgram] = useState("");
-
+  const handleButton = (
+    subjectName: string,
+    description: string,
+    teacherName: string,
+    course: string,
+    program: string
+  ) => {
+    if (
+      subjectName === "" ||
+      description === "" ||
+      teacherName === "" ||
+      course === "" ||
+      program === ""
+    ) {
+      return null
+    } else {
+      setModalAddSubject(false)
+    }
+  }
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
+    event.preventDefault()
     console.log({
       subjectName,
       description,
       teacherName,
       course,
       program,
-    });
-    setSubjectName("");
-    setDescription("");
-    setTeacherName("");
-    setCourse("");
-    setProgram("");
-  };
+    })
+    setSubjectName("")
+    setDescription("")
+    setTeacherName("")
+    setCourse("")
+    setProgram("")
+  }
 
   return (
-    <>
+    <div className="addSubject">
       {page === "addSubject" && (
         <Card
           className="w-[544px]"
           style={{
             borderRadius: "24px",
             paddingInline: "40px",
-            paddingBottom: "30px",
           }}
         >
           <CardHeader>
@@ -64,7 +85,7 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({ page }) => {
             <form onSubmit={handleSubmit}>
               <div className="grid w-full items-center gap-6">
                 <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="subjectName">Название предмета:</Label>
+                  <Label htmlFor="subjectName">Название предмета</Label>
                   <Input
                     id="subjectName"
                     placeholder="Введите название"
@@ -74,7 +95,7 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({ page }) => {
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="description">Описание предмета:</Label>
+                  <Label htmlFor="description">Описание предмета</Label>
                   <textarea
                     id="description"
                     placeholder="Введите описание"
@@ -82,6 +103,7 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({ page }) => {
                     onChange={(e) => setDescription(e.target.value)}
                     className="border rounded px-3 py-2 w-full"
                     required
+                    style={{ resize: "none", height: "80px" }}
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
@@ -95,7 +117,7 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({ page }) => {
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="course">Курс:</Label>
+                  <Label htmlFor="course">Курс</Label>
                   <Input
                     id="course"
                     placeholder="Введите курс"
@@ -105,7 +127,7 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({ page }) => {
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="program">Программа:</Label>
+                  <Label htmlFor="program">Программа</Label>
                   <Input
                     id="program"
                     placeholder="Введите программу"
@@ -114,8 +136,23 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({ page }) => {
                     required
                   />
                 </div>
-                <CardFooter className="flex justify-between mt-4">
-                  <Button type="submit" className="buttonAddSubject">
+                <CardFooter
+                  className="flex justify-between mt-4"
+                  style={{ width: "100%", paddingInline: "0px" }}
+                >
+                  <Button
+                    type="submit"
+                    className="buttonAddSubject"
+                    onClick={() => {
+                      handleButton(
+                        subjectName,
+                        description,
+                        teacherName,
+                        course,
+                        program
+                      )
+                    }}
+                  >
                     Добавить
                   </Button>
                 </CardFooter>
@@ -124,16 +161,8 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({ page }) => {
           </CardContent>
         </Card>
       )}
-    </>
-  );
-};
-
-const App: React.FC = () => {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <AddSubjectCard page="addSubject" />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default AddSubjectCard

@@ -45,3 +45,62 @@
 .subjectPage {
   max-width: 100vw;
 }
+.modalAddSubject {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  position: fixed;
+  top: calc(50% - 328px);
+  left: calc(50% - 325px);
+}
+.backgroundModalBlock {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.modalContainerSubjectsPage {
+  position: fixed;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  transition: 0.5s;
+}
+.modalAccSubjectPage {
+  position: fixed;
+  z-index: 100;
+  top: 55px;
+  right: 80px;
+  transition: 1s;
+}
+.accModalRefactoringSubjectPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  position: fixed;
+  top: calc(50% - 269px);
+  left: calc(50% - 339px);
+}
+.backgroundAccModalRefactoringSubjectPage {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+.containerAccModalRefactoringSubjectPage {
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10000;
+  transition: 0.5s;
+}

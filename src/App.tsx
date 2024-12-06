@@ -1,16 +1,14 @@
-import "./App.css";
-// import SubjectPage from "./pages/SubjectsPage/subjectsPage"
-// import { LoginPage } from "./pages/LoginPage/loginPage"
-import AddSubject from "./components/AddSubject/addSubject";
+import "./App.css"
+import SubjectPage from "./pages/SubjectsPage/subjectsPage"
+import { LoginPage } from "./pages/LoginPage/loginPage"
 
 function App() {
   return (
     <div className="App">
       {/* <LoginPage /> */}
-      {/* <SubjectPage /> */}
-      <AddSubject />
+      <SubjectPage />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
