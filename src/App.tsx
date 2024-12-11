@@ -1,14 +1,18 @@
-import "./App.css"
-import SubjectPage from "./pages/SubjectsPage/subjectsPage"
-import { LoginPage } from "./pages/LoginPage/loginPage"
+import { BrowserRouter, Routes, Route } from "react-router";
+
+import "./App.css";
+import { SubjectPage } from "./pages/SubjectsPage/subjectsPage";
+import { LoginPage } from "./pages/LoginPage/loginPage";
 
 function App() {
   return (
-    <div className="App">
-      {/* <LoginPage /> */}
-      <SubjectPage />
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<SubjectPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
