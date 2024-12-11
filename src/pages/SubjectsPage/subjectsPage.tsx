@@ -3,6 +3,10 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import SubjectCard from "@/components/subjectCard/subjectCard"
 import "./subjectsPage.css"
+import { useState } from "react"
+import AddSubjectCard from "@/components/AddSubject/addSubject"
+import AccountModal from "@/components/AccountModal/accountModal"
+import { AccModalRefactoring } from "@/components/AccModalRefactoring/accModalRefactoring"
 interface Subject {
   title: string
   info: string
@@ -11,6 +15,16 @@ interface Subject {
   course: number
 }
 const SubjectPage = () => {
+  const [modalAddSubject, setModalAddSubject] = useState(false)
+  const [modalAccount, setModalAccount] = useState(false)
+  const [modalAccountRefactoring, setModalAccountRefactoring] = useState(false)
+  const handleButtonAddSubject = () => {
+    setModalAddSubject((pr) => !pr)
+  }
+  const handleAccountRefactoring = () => {
+    setModalAccountRefactoring((pr) => !pr)
+  }
+
   const arr_sub: Subject[] = [
     {
       title: "Физика",
@@ -50,7 +64,50 @@ const SubjectPage = () => {
   ]
   return (
     <div className="subjectPage">
-      <Header />
+      {modalAccountRefactoring && (
+        <div className="containerAccModalRefactoringSubjectPage">
+          <div
+            className="backgroundAccModalRefactoringSubjectPage"
+            onClick={handleAccountRefactoring}
+          ></div>
+          <div className="accModalRefactoringSubjectPage">
+            <AccModalRefactoring
+              setModalAccountRefactoring={setModalAccountRefactoring}
+            />
+          </div>
+        </div>
+      )}
+      {modalAddSubject && (
+        <div className="modalContainerSubjectsPage">
+          <div
+            className="backgroundModalBlock"
+            onClick={handleButtonAddSubject}
+          ></div>
+          <div className="modalAddSubject">
+            {
+              <AddSubjectCard
+                page={"addSubject"}
+                setModalAddSubject={setModalAddSubject}
+              />
+            }
+          </div>
+        </div>
+      )}
+      <Header setModalAccount={setModalAccount} />
+      <div className="modalAccSubjectPage">
+        {modalAccount && (
+          <AccountModal
+            isu={410542}
+            name={"Мария"}
+            surname={"Федорова"}
+            course={1}
+            faculty={"ПИН"}
+            programm={"Мобильные и сетевые технологии"}
+            setModalAccountRefactoring={setModalAccountRefactoring}
+          />
+        )}
+      </div>
+
       <div className="subjectBlockCenter">
         <div className="titleSubjectContainer">Предметы</div>
 
@@ -66,7 +123,13 @@ const SubjectPage = () => {
             <div className="textFilterSubjectPage">Фильтры</div>
             <div className="textFilterSubjectPage">Сначала новые</div>
           </div>
-          <Button className="buttonLogin">Создать предмет</Button>
+          <Button
+            className="buttonLogin"
+            style={{ maxWidth: "154px" }}
+            onClick={handleButtonAddSubject}
+          >
+            Создать предмет
+          </Button>
         </div>
         <div className="subjectContainer">
           {arr_sub.map((sub, index) => (
