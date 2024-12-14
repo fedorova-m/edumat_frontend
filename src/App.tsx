@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "./App.css"
 <<<<<<< HEAD
 // import SubjectPage from "./pages/SubjectsPage/subjectsPage"
@@ -16,6 +17,23 @@ function App() {
       <AddSubject />
     </div>
   )
+=======
+import { BrowserRouter, Routes, Route } from "react-router";
+
+import "./App.css";
+import { SubjectPage } from "./pages/SubjectsPage/subjectsPage";
+import { LoginPage } from "./pages/LoginPage/loginPage";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<SubjectPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+>>>>>>> 8496d883b4db84190b0b99a84bafdaf9ec258bdc
 }
 
-export default App
+export default App;

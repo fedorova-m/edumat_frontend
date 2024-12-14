@@ -14,7 +14,7 @@ interface Subject {
   programm: string
   course: number
 }
-const SubjectPage = () => {
+export const SubjectPage = () => {
   const [modalAddSubject, setModalAddSubject] = useState(false)
   const [modalAccount, setModalAccount] = useState(false)
   const [modalAccountRefactoring, setModalAccountRefactoring] = useState(false)
@@ -149,5 +149,3 @@ const SubjectPage = () => {
     </div>
   )
 }
-
-export default SubjectPage
