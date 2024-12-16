@@ -1,18 +1,20 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router"
 
-import "./App.css";
-import { SubjectPage } from "./pages/SubjectsPage/subjectsPage";
-import { LoginPage } from "./pages/LoginPage/loginPage";
+import "./App.css"
+import { SubjectPage } from "./pages/SubjectsPage/subjectsPage"
+import { LoginPage } from "./pages/LoginPage/loginPage"
+import { RegPage } from "./pages/LoginPage/regPage"
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<SubjectPage />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/registration" element={<RegPage />} />
+        <Route path="/account" element={<SubjectPage />} />
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
