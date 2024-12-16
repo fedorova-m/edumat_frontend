@@ -1,29 +1,30 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Switch } from "@/components/ui/switch";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+} from "@/components/ui/card"
+import { Switch } from "@/components/ui/switch"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import "../loginCard/LoginCard.css"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { client } from "@/lib/http";
-import { isAxiosError } from "axios";
+} from "@/components/ui/form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { client } from "@/lib/http"
+import { isAxiosError } from "axios"
+import { Link } from "react-router"
 
 const formSchema = z.object({
   isunumber: z.string().length(6, { message: "Должно быть 6 символов" }),
@@ -33,10 +34,10 @@ const formSchema = z.object({
   email: z.string().email(),
   username: z.string().min(4, { message: "Минимум 4 символа" }),
   password: z.string().min(4, { message: "Минимум 4 символа" }),
-});
+})
 
 export function RegisterForm() {
-  const [teacher, setTeacher] = useState(false);
+  const [teacher, setTeacher] = useState(false)
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -49,34 +50,34 @@ export function RegisterForm() {
       password: "",
       email: "",
     },
-  });
-
+  })
+  const { isValid } = form.formState
   const toggleTeacher = () => {
-    setTeacher((prev) => !prev);
-  };
+    setTeacher((prev) => !prev)
+  }
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await client.post("customuser/", values);
+      await client.post("customuser/", values)
 
-      alert("Вы успешно зарегистрировались");
+      alert("Вы успешно зарегистрировались")
     } catch (e) {
       if (isAxiosError(e)) {
-        const errors = e?.response?.data;
+        const errors = e?.response?.data
 
         if (!errors) {
-          return;
+          return
         }
 
         Object.keys(errors).forEach((field) => {
-          const fieldError = errors[field]?.join(", ") || "";
+          const fieldError = errors[field]?.join(", ") || ""
 
           // @ts-ignore
-          form.setError(field, { message: fieldError });
-        });
+          form.setError(field, { message: fieldError })
+        })
       }
     }
-  };
+  }
 
   return (
     <Card
@@ -271,12 +272,27 @@ export function RegisterForm() {
             </div>
           </form>
         )}
-      </CardContent>
-      <CardFooter className="flex justify-between">
-        <Button type="submit" form="registerForm" className="buttonLogin">
-          Cоздать аккаунт
-        </Button>
-      </CardFooter>
+      </CardContent>{" "}
+      <div className="footerRegistrForm">
+        {isValid ? (
+          <Link to="/account">
+            <CardFooter className="flex justify-between">
+              <Button type="submit" form="registerForm" className="buttonLogin">
+                Cоздать аккаунт
+              </Button>
+            </CardFooter>
+          </Link>
+        ) : (
+          <CardFooter className="flex justify-between">
+            <Button type="submit" form="registerForm" className="buttonLogin">
+              Cоздать аккаунт
+            </Button>{" "}
+          </CardFooter>
+        )}
+        <Link to="/">
+          <div className="textBottomLoginCard">Уже есть аккаунт?</div>
+        </Link>
+      </div>
     </Card>
-  );
+  )
 }

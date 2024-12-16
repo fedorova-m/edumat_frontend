@@ -1,30 +1,22 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import "./LoginCard.css";
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { RegisterForm } from "@/components/RegisterForm/RegisterForm";
-
+} from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import "./LoginCard.css"
+import { RegisterForm } from "@/components/RegisterForm/RegisterForm"
+import { Link } from "react-router"
+import "./LoginCard.css"
 type CardWithFormProps = {
-  page: string;
-};
+  page: string
+}
 const CardWithForm: React.FC<CardWithFormProps> = ({ page }) => {
-  const [teacher, setTeacher] = useState(false);
-
-  const form = useForm();
-
-  const handleSwitch = () => {
-    setTeacher((prev) => !prev);
-  };
-
+  console.log(page)
   return (
     <>
       {page === "login" ? (
@@ -61,15 +53,18 @@ const CardWithForm: React.FC<CardWithFormProps> = ({ page }) => {
                 </div>
               </div>
             </form>
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            <Button className="buttonLogin">Войти</Button>
-          </CardFooter>
+          </CardContent>{" "}
+          <Link to="/registration">
+            <CardFooter className="flex justify-between">
+              <Button className="buttonLogin">Войти</Button>
+            </CardFooter>{" "}
+            <div className="textBottomLoginCard">Создать аккаунт</div>
+          </Link>
         </Card>
       ) : (
         <RegisterForm />
       )}
     </>
-  );
-};
-export default CardWithForm;
+  )
+}
+export default CardWithForm
