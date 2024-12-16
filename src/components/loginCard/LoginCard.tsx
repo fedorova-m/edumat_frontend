@@ -16,6 +16,7 @@ type CardWithFormProps = {
   page: string
 }
 const CardWithForm: React.FC<CardWithFormProps> = ({ page }) => {
+  console.log(page)
   return (
     <>
       {page === "login" ? (
