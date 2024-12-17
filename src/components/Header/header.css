@@ -6,3 +6,6 @@
   padding-block: 11px;
   border-bottom: 1px solid #cbd5e1;
 }
+.imgIconAcc:hover {
+  cursor: pointer;
+}

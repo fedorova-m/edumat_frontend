@@ -192,7 +192,7 @@ export const AccModalRefactoring: React.FC<AccModalRefactoringProps> = ({
               )
             }
           >
-            Cоздать аккаунт
+            Обновить данные
           </Button>
         </CardFooter>
       </Card>

@@ -49,6 +49,9 @@
   line-height: 171%;
   color: #0f172a;
 }
+.textOneBottomAccountModal:hover {
+  cursor: pointer;
+}
 .textTwoBottomAccountModal {
   font-family: var(--font-family);
   font-weight: 500;

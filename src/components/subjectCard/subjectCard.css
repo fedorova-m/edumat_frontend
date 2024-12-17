@@ -38,6 +38,9 @@
   width: 32px;
   height: 32px;
 }
+.svgSubjectCard {
+  cursor: pointer;
+}
 .subjectCard {
   display: flex;
   flex-direction: column;
