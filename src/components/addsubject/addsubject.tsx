@@ -9,27 +9,28 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
-import "./addSubject.css"
+
 type AddSubjectCardProps = {
   page: string
   setModalAddSubject: Function
+  onSubmit: Function
 }
 const AddSubjectCard: React.FC<AddSubjectCardProps> = ({
   page,
   setModalAddSubject,
+  onSubmit,
 }) => {
   const [subjectName, setSubjectName] = useState("")
   const [description, setDescription] = useState("")
   const [teacherName, setTeacherName] = useState("")
   const [course, setCourse] = useState("")
   const [program, setProgram] = useState("")
-
   const handleButton = (
     subjectName: string,
     description: string,
     teacherName: string,
-    course: string,
-    program: string
+    program: string,
+    course: string
   ) => {
     if (
       subjectName === "" ||
@@ -45,6 +46,14 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({
   }
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
+    const newData = {
+      title: subjectName,
+      info: description,
+      teacherName,
+      programm: program,
+      course: course,
+    }
+    onSubmit(newData)
     console.log({
       subjectName,
       description,
@@ -143,13 +152,14 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({
                   <Button
                     type="submit"
                     className="buttonAddSubject"
+                    style={{ background: "#0f172a", width: "100%" }}
                     onClick={() => {
                       handleButton(
                         subjectName,
                         description,
                         teacherName,
-                        course,
-                        program
+                        program,
+                        course
                       )
                     }}
                   >

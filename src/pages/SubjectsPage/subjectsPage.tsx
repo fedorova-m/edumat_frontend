@@ -4,64 +4,37 @@ import { Button } from "@/components/ui/button"
 import SubjectCard from "@/components/subjectCard/subjectCard"
 import "./subjectsPage.css"
 import { useState } from "react"
-import AddSubjectCard from "@/components/AddSubject/addSubject"
+import AddSubjectCard from "@/components/AddSubject/addsubject"
 import AccountModal from "@/components/AccountModal/accountModal"
 import { AccModalRefactoring } from "@/components/AccModalRefactoring/accModalRefactoring"
+import { useDispatch } from "react-redux"
+import { addSubject } from "@/store/subjectSlice"
+import { arr_sub } from "@/store/subjectSlice"
 interface Subject {
   title: string
   info: string
   teacherName: string
   programm: string
-  course: number
+  course: string
 }
+
 export const SubjectPage = () => {
   const [modalAddSubject, setModalAddSubject] = useState(false)
   const [modalAccount, setModalAccount] = useState(false)
   const [modalAccountRefactoring, setModalAccountRefactoring] = useState(false)
-  const handleButtonAddSubject = () => {
+  const dispatch = useDispatch()
+  const handleOpenAddSubject = () => {
     setModalAddSubject((pr) => !pr)
+  }
+  const handleButtonAddSubject = (newSubject: Subject) => {
+    dispatch(addSubject(newSubject))
+    setModalAddSubject((pr) => !pr)
+    console.log()
   }
   const handleAccountRefactoring = () => {
     setModalAccountRefactoring((pr) => !pr)
   }
 
-  const arr_sub: Subject[] = [
-    {
-      title: "Физика",
-      info: "Небольшое описание предмета",
-      teacherName: "Илья Петров",
-      programm: "Мобильные и сетевые технологии",
-      course: 1,
-    },
-    {
-      title: "Математика",
-      info: "Небольшое описание предметаНебольшое описание предметаНебольшое описание предметаНебольшое описание предметаНебольшое описание предметаНебольшое описание предметаНебольшое описание предмета",
-      teacherName: "Оля Савельева",
-      programm: "Инфокоммуникационные системы и технологии",
-      course: 4,
-    },
-    {
-      title: "Физика",
-      info: "Небольшое описание предмета",
-      teacherName: "Саша Курочкин",
-      programm: "название программы",
-      course: 3,
-    },
-    {
-      title: "Математика",
-      info: "Небольшое описание предмета",
-      teacherName: "Петя Иванов",
-      programm: "название программы",
-      course: 2,
-    },
-    {
-      title: "Английский язык",
-      info: "Небольшое описание предмета",
-      teacherName: "Игорь Соколовский",
-      programm: "название программы",
-      course: 3,
-    },
-  ]
   return (
     <div className="subjectPage">
       {modalAccountRefactoring && (
@@ -81,13 +54,14 @@ export const SubjectPage = () => {
         <div className="modalContainerSubjectsPage">
           <div
             className="backgroundModalBlock"
-            onClick={handleButtonAddSubject}
+            onClick={handleOpenAddSubject}
           ></div>
           <div className="modalAddSubject">
             {
               <AddSubjectCard
                 page={"addSubject"}
                 setModalAddSubject={setModalAddSubject}
+                onSubmit={handleButtonAddSubject}
               />
             }
           </div>
@@ -126,23 +100,27 @@ export const SubjectPage = () => {
           <Button
             className="buttonLogin"
             style={{ maxWidth: "154px" }}
-            onClick={handleButtonAddSubject}
+            onClick={handleOpenAddSubject}
           >
             Создать предмет
           </Button>
         </div>
         <div className="subjectContainer">
           {arr_sub.map((sub, index) => (
-            <SubjectCard
-              key={index}
-              title={sub.title}
-              info={
-                sub.info.length > 30 ? sub.info.slice(0, 30) + "..." : sub.info
-              }
-              teacherName={sub.teacherName}
-              programm={sub.programm}
-              course={sub.course}
-            />
+            <div className="subjectCardPageSubject">
+              <SubjectCard
+                key={index}
+                title={sub.title}
+                info={
+                  sub.info.length > 30
+                    ? sub.info.slice(0, 30) + "..."
+                    : sub.info
+                }
+                teacherName={sub.teacherName}
+                programm={sub.programm}
+                course={sub.course}
+              />
+            </div>
           ))}
         </div>
       </div>

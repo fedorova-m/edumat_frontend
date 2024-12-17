@@ -29,11 +29,11 @@ import { Link } from "react-router"
 const formSchema = z.object({
   isunumber: z.string().length(6, { message: "Должно быть 6 символов" }),
   course: z.string().length(1, { message: "Должно быть 1 символ" }),
-  first_name: z.string().min(4, { message: "Минимум 4 символа" }),
-  last_name: z.string().min(4, { message: "Минимум 4 символа" }),
-  email: z.string().email(),
-  username: z.string().min(4, { message: "Минимум 4 символа" }),
-  password: z.string().min(4, { message: "Минимум 4 символа" }),
+  first_name: z.string().min(1, { message: "Заполните поле" }),
+  last_name: z.string().min(1, { message: "Заполните поле" }),
+  email: z.string().email("Некорректный email"),
+  username: z.string().min(1, { message: "Заполните поле" }),
+  password: z.string().min(6, { message: "Пароль слишком короткий" }),
 })
 
 export function RegisterForm() {
