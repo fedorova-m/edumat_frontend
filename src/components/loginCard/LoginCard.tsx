@@ -49,15 +49,17 @@ const CardWithForm: React.FC<CardWithFormProps> = ({ page }) => {
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Пароль</Label>
-                  <Input id="name" placeholder="Введите пароль" />
+                  <Input id="name" type="password" placeholder="Введите пароль" />
                 </div>
               </div>
             </form>
           </CardContent>{" "}
-          <Link to="/registration">
+          <Link to="/">
             <CardFooter className="flex justify-between">
               <Button className="buttonLogin">Войти</Button>
             </CardFooter>{" "}
+          </Link>
+          <Link to="/registration">
             <div className="textBottomLoginCard">Создать аккаунт</div>
           </Link>
         </Card>

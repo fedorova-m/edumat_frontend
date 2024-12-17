@@ -1,39 +1,52 @@
-import Header from "../../components/Header/header"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import SubjectCard from "@/components/subjectCard/subjectCard"
-import "./subjectsPage.css"
-import { useState } from "react"
-import AddSubjectCard from "@/components/AddSubject/addsubject"
-import AccountModal from "@/components/AccountModal/accountModal"
-import { AccModalRefactoring } from "@/components/AccModalRefactoring/accModalRefactoring"
-import { useDispatch } from "react-redux"
-import { addSubject } from "@/store/subjectSlice"
-import { arr_sub } from "@/store/subjectSlice"
+import Header from "../../components/Header/header";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import SubjectCard from "@/components/subjectCard/subjectCard";
+import "./subjectsPage.css";
+import { useState } from "react";
+import AddSubjectCard from "@/components/AddSubject/addsubject";
+import AccountModal from "@/components/AccountModal/accountModal";
+import { AccModalRefactoring } from "@/components/AccModalRefactoring/accModalRefactoring";
+import { useSelector, useDispatch } from "react-redux";
+import { addSubject } from "@/store/subjectSlice";
+import { RootState } from "@/store/store";
 interface Subject {
-  title: string
-  info: string
-  teacherName: string
-  programm: string
-  course: string
+  title: string;
+  info: string;
+  teacherName: string;
+  programm: string;
+  course: string;
 }
 
 export const SubjectPage = () => {
-  const [modalAddSubject, setModalAddSubject] = useState(false)
-  const [modalAccount, setModalAccount] = useState(false)
-  const [modalAccountRefactoring, setModalAccountRefactoring] = useState(false)
-  const dispatch = useDispatch()
+  const [modalAddSubject, setModalAddSubject] = useState(false);
+  const [modalAccount, setModalAccount] = useState(false);
+  const [modalAccountRefactoring, setModalAccountRefactoring] = useState(false);
+
+  const [search, setSearch] = useState("");
+
+  const subjectsArr = useSelector(
+    (state: RootState) => state.subjects.subjects
+  );
+  const dispatch = useDispatch();
+
+  const filteredSubjects = subjectsArr.filter((subject) => {
+    return subject.title.toLowerCase().includes(search.toLowerCase());
+  });
+
   const handleOpenAddSubject = () => {
-    setModalAddSubject((pr) => !pr)
-  }
+    setModalAddSubject((pr) => !pr);
+  };
+
   const handleButtonAddSubject = (newSubject: Subject) => {
-    dispatch(addSubject(newSubject))
-    setModalAddSubject((pr) => !pr)
-    console.log()
-  }
+    dispatch(addSubject(newSubject));
+    setModalAddSubject((pr) => !pr);
+    console.log();
+  };
+
   const handleAccountRefactoring = () => {
-    setModalAccountRefactoring((pr) => !pr)
-  }
+    setModalAccountRefactoring((pr) => !pr);
+  };
   return (
     <div className="subjectPage">
       {modalAccountRefactoring && (
@@ -90,7 +103,9 @@ export const SubjectPage = () => {
               <Input
                 id="name"
                 placeholder="Поиск"
+                value={search}
                 style={{ minWidth: "410px" }}
+                onChange={(e) => setSearch(e.target.value)}
               />
             </div>
             <div className="textFilterSubjectPage">Фильтры</div>
@@ -105,7 +120,7 @@ export const SubjectPage = () => {
           </Button>
         </div>
         <div className="subjectContainer">
-          {arr_sub.map((sub, index) => (
+          {filteredSubjects.map((sub, index) => (
             <div className="subjectCardPageSubject">
               <SubjectCard
                 key={index}
@@ -124,5 +139,5 @@ export const SubjectPage = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

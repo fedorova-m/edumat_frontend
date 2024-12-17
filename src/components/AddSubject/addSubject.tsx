@@ -10,10 +10,18 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useState } from "react"
 
+interface Subject {
+  title: string
+  info: string
+  teacherName: string
+  programm: string
+  course: string
+}
+
 type AddSubjectCardProps = {
   page: string
-  setModalAddSubject: Function
-  onSubmit: Function
+  setModalAddSubject: (state: boolean) => void
+  onSubmit: (arg: Subject) => void
 }
 const AddSubjectCard: React.FC<AddSubjectCardProps> = ({
   page,
@@ -25,25 +33,7 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({
   const [teacherName, setTeacherName] = useState("")
   const [course, setCourse] = useState("")
   const [program, setProgram] = useState("")
-  const handleButton = (
-    subjectName: string,
-    description: string,
-    teacherName: string,
-    program: string,
-    course: string
-  ) => {
-    if (
-      subjectName === "" ||
-      description === "" ||
-      teacherName === "" ||
-      course === "" ||
-      program === ""
-    ) {
-      return null
-    } else {
-      setModalAddSubject(false)
-    }
-  }
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
     const newData = {
@@ -66,6 +56,7 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({
     setTeacherName("")
     setCourse("")
     setProgram("")
+    setModalAddSubject(false)
   }
 
   return (
@@ -153,15 +144,6 @@ const AddSubjectCard: React.FC<AddSubjectCardProps> = ({
                     type="submit"
                     className="buttonAddSubject"
                     style={{ background: "#0f172a", width: "100%" }}
-                    onClick={() => {
-                      handleButton(
-                        subjectName,
-                        description,
-                        teacherName,
-                        program,
-                        course
-                      )
-                    }}
                   >
                     Добавить
                   </Button>

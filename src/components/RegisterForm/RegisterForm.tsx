@@ -206,7 +206,7 @@ export function RegisterForm() {
                       <FormItem>
                         <FormLabel>Пароль</FormLabel>
                         <FormControl>
-                          <Input placeholder="Введите пароль" {...field} />
+                          <Input type="password" placeholder="Введите пароль" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

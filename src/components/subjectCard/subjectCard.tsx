@@ -9,7 +9,8 @@ const SubjectCard = ({
   course,
 }: AppProps) => {
   const [favoriteSub, setFavoriteSub] = useState(false);
-  const handleFavoriteSubject = () => {
+  const handleFavoriteSubject = (e: React.MouseEvent) => {
+    e.preventDefault();
     setFavoriteSub((pr) => !pr);
   };
   return (
@@ -18,7 +19,6 @@ const SubjectCard = ({
         <div className="headerSubjectCard">
           <div className="titleSubjectCard">{title}</div>
           {favoriteSub ? (
-            <Link to="/account">
               <svg
                 className="svgSubjectCard"
                 onClick={handleFavoriteSubject}
@@ -36,7 +36,6 @@ const SubjectCard = ({
                   stroke-linejoin="round"
                 />
               </svg>
-            </Link>
           ) : (
             <svg
               onClick={handleFavoriteSubject}
