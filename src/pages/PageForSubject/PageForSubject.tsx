@@ -90,7 +90,6 @@ const mockMaterials: Material[] = [
     dislikes: 0,
     isChecked: false,
   },
-  // Добавьте остальные материалы здесь...
 ]
 
 const PageForSubject: React.FC = () => {
@@ -105,7 +104,7 @@ const PageForSubject: React.FC = () => {
       <div className="font-inter mx-[80px]" style={{ paddingBottom: "30px" }}>
         {/* Header */}
         <div style={{ width: "851px", height: "272px", marginTop: "50px" }}>
-          <Link to="/account">
+          <Link to="/">
             {" "}
             <Button
               variant="ghost"

@@ -38,7 +38,7 @@ const formSchema = z.object({
 
 export function RegisterForm() {
   const [teacher, setTeacher] = useState(false)
-
+  console.log("")
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -206,7 +206,11 @@ export function RegisterForm() {
                       <FormItem>
                         <FormLabel>Пароль</FormLabel>
                         <FormControl>
-                          <Input type="password" placeholder="Введите пароль" {...field} />
+                          <Input
+                            type="password"
+                            placeholder="Введите пароль"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
