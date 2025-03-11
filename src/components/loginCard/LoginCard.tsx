@@ -16,7 +16,6 @@ type CardWithFormProps = {
   page: string
 }
 const CardWithForm: React.FC<CardWithFormProps> = ({ page }) => {
-  console.log(page)
   return (
     <>
       {page === "login" ? (
@@ -49,7 +48,11 @@ const CardWithForm: React.FC<CardWithFormProps> = ({ page }) => {
                 </div>
                 <div className="flex flex-col space-y-1.5">
                   <Label htmlFor="name">Пароль</Label>
-                  <Input id="name" type="password" placeholder="Введите пароль" />
+                  <Input
+                    id="name"
+                    type="password"
+                    placeholder="Введите пароль"
+                  />
                 </div>
               </div>
             </form>
