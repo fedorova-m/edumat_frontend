@@ -1,3 +1,4 @@
+
 import React, { useState } from "react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -80,6 +81,7 @@ const mockMaterials: Material[] = [
     isChecked: false,
   },
   {
+
     title: "Лекция 4",
     description: "Описание лекции 4",
     uploadedBy: "Илья Петров",
@@ -126,6 +128,7 @@ const PageForSubject: React.FC = () => {
               className="flex items-center gap-1"
               style={{ width: "40px", height: "40px" }}
             >
+
               <Star size={20} />
             </Button>
           </div>
@@ -206,6 +209,7 @@ const PageForSubject: React.FC = () => {
             >
               Сначала новые
             </Button>
+
           </div>
           <Button onClick={handleOpenModal}>Добавить материал</Button>
         </div>
@@ -237,6 +241,7 @@ const PageForSubject: React.FC = () => {
                         textOverflow: "ellipsis",
                       }}
                     >
+
                       {material.description}
                     </p>
                   </TooltipTrigger>
@@ -288,6 +293,7 @@ const PageForSubject: React.FC = () => {
                     size="icon"
                     className="flex items-center gap-1"
                   >
+
                     <ThumbsDown size={20} /> {material.dislikes}
                   </Button>
                 </div>

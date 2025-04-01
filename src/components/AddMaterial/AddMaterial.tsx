@@ -19,6 +19,7 @@ const AddMaterialModal: React.FC<AddMaterialModalProps> = ({
   const handleAddMaterial = () => {
     // Здесь можете добавить логику для обработки данных (например, отправку на сервер)
     console.log("Добавляем материал:", { title, description, tags, File })
+
     onClose() // Закрытие модального окна после добавления материала
   }
 
