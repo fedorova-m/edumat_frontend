@@ -29,16 +29,16 @@ import { Link } from "react-router"
 const formSchema = z.object({
   isunumber: z.string().length(6, { message: "Должно быть 6 символов" }),
   course: z.string().length(1, { message: "Должно быть 1 символ" }),
-  first_name: z.string().min(4, { message: "Минимум 4 символа" }),
-  last_name: z.string().min(4, { message: "Минимум 4 символа" }),
-  email: z.string().email(),
-  username: z.string().min(4, { message: "Минимум 4 символа" }),
-  password: z.string().min(4, { message: "Минимум 4 символа" }),
+  first_name: z.string().min(1, { message: "Заполните поле" }),
+  last_name: z.string().min(1, { message: "Заполните поле" }),
+  email: z.string().email("Некорректный email"),
+  username: z.string().min(1, { message: "Заполните поле" }),
+  password: z.string().min(6, { message: "Пароль слишком короткий" }),
 })
 
 export function RegisterForm() {
   const [teacher, setTeacher] = useState(false)
-
+  console.log("")
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -206,7 +206,11 @@ export function RegisterForm() {
                       <FormItem>
                         <FormLabel>Пароль</FormLabel>
                         <FormControl>
-                          <Input placeholder="Введите пароль" {...field} />
+                          <Input
+                            type="password"
+                            placeholder="Введите пароль"
+                            {...field}
+                          />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -275,7 +279,7 @@ export function RegisterForm() {
       </CardContent>{" "}
       <div className="footerRegistrForm">
         {isValid ? (
-          <Link to="/account">
+          <Link to="/">
             <CardFooter className="flex justify-between">
               <Button type="submit" form="registerForm" className="buttonLogin">
                 Cоздать аккаунт
@@ -289,7 +293,7 @@ export function RegisterForm() {
             </Button>{" "}
           </CardFooter>
         )}
-        <Link to="/">
+        <Link to="/login">
           <div className="textBottomLoginCard">Уже есть аккаунт?</div>
         </Link>
       </div>

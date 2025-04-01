@@ -13,6 +13,7 @@ const Header: React.FC<HeaderProps> = ({ setModalAccount }) => {
     <div className="header">
       <img src={leftHeaderImg} style={{ width: "132px", height: "22px" }} />
       <img
+        className="imgIconAcc"
         src={acc_icon}
         style={{ width: "40px" }}
         onClick={handleIconAccount}

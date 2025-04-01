@@ -104,3 +104,8 @@
   z-index: 10000;
   transition: 0.5s;
 }
+.subjectCardPageSubject {
+  width: 100%;
+  min-width: 300px;
+  max-width: calc((100vw - 72px + 24px - 160px) / 3);
+}
