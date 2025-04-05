@@ -1,34 +1,22 @@
 
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router"
 
-import "./App.css";
-import { SubjectPage } from "./pages/SubjectsPage/subjectsPage";
-import { LoginPage } from "./pages/LoginPage/loginPage";
-import { RegPage } from "./pages/LoginPage/regPage";
-import PageForSubject from "./pages/PageForSubject/PageForSubject";
-import { store } from "./store/store";
-import { Provider } from "react-redux";
+import "./App.css"
+import { SubjectPage } from "./pages/SubjectsPage/subjectsPage"
+import { LoginPage } from "./pages/LoginPage/loginPage"
+import { RegPage } from "./pages/LoginPage/regPage"
 
 function App() {
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route key={"login"} path="/login" element={<LoginPage />} />
-          <Route
-            key={"registration"}
-            path="/registration"
-            element={<RegPage />}
-          />
-          <Route key={"subjectPage"} path="/" element={<SubjectPage />} />
-          <Route
-            key={"pageForSubject"}
-            path="/subject/12"
-            element={<PageForSubject />}
-          />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/registration" element={<RegPage />} />
+        <Route path="/account" element={<SubjectPage />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
-export default App;
+
+export default App
+
